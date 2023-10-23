@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply m-0 font-publicSans scroll-smooth;
+}
+
+input:focus ~ .input-text {
+  @apply top-6 flex text-blue-500 transform -translate-y-9 -translate-x-4 scale-75;
+}
+
+#vidimage:hover ~ .hover-show {
+  @apply block visible;
+}
+
+#playimage:hover ~ .hover-scale {
+  @apply scale-105;
+}
+
+contain {
+  @apply flex overflow-x-scroll flex-nowrap;
+}
+
+.dropdown {
+  @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end;
+}
+
+.dropdown_link {
+  @apply text-sm text-gray-700 hover:text-gray-500 font-medium;
+}
+
+.carousel-container {
+  @apply h-full w-full;
+}
