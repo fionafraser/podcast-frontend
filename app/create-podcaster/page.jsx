@@ -49,6 +49,7 @@ const CreatePodcaster = () => {
 	const inputFile = useRef(null);
 
 	const [newlink, setNewlink] = useState("");
+	const [uploading, setUploading] = useState(false)
 
 	const router = useRouter();
 	const dispatch = useDispatch();
@@ -121,7 +122,7 @@ const CreatePodcaster = () => {
 								/>
 							) : (
 								<Image
-									src={"/svgs/profile.svg"}
+									src={uploading ? "/gifs/loading.gif" :"/svgs/profile.svg"}
 									width={100}
 									height={100}
 									alt="profile icon"
@@ -139,17 +140,21 @@ const CreatePodcaster = () => {
 								e.preventDefault();
 
 								const file = e.target.files?.[0];
+				
 
 								if (!file) return;
 								if (!file.type.includes("image")) {
 									return alert("Please upload an image file");
 								}
 
+								if(file?.size > 1000000) return alert("Please select an image less than 1MB")
+
 								const reader = new FileReader();
 
 								reader.readAsDataURL(file);
 								reader.onload = async () => {
 									const result = reader.result;
+									setUploading((i) => !i);
 
 									try {
 										const response = await fetch(`/api/upload`, {
@@ -162,6 +167,8 @@ const CreatePodcaster = () => {
 									} catch (error) {
 										console.log(error);
 										throw error;
+									}finally{
+										setUploading(i => !i);
 									}
 								};
 							}}
@@ -172,7 +179,7 @@ const CreatePodcaster = () => {
 							className="bg-success flex flex-row gap-3 justify-center items-center rounded-lg p-2 self-center my-2"
 						>
 							<Image
-								src={"/svgs/upload.svg"}
+								src={uploading ? "/gifs/uploading.gif" : "/svgs/upload.svg"}
 								width={15}
 								height={15}
 								alt="upload image"
@@ -414,7 +421,7 @@ const CreatePodcaster = () => {
 											}}
 											value={website}
 											type="url"
-											placeholder={"Podcast Title"}
+											placeholder={"Email Address"}
 										/>
 									</div>
 								</div>

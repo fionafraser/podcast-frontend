@@ -94,7 +94,7 @@ const Favorites = () => {
 				</div>
 
 				<div className="h-full">
-					<p className="text-primary text-5xl font-black">Favorites</p>
+					<p className="text-primary text-5xl font-black">Favourites</p>
 					{data.length > 0 ? (
 						<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 relative">
 							{data.map(({ image, name, email, _id, profile_type }, index) => (
