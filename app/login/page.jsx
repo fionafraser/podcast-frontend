@@ -143,12 +143,12 @@ const Login = ({ searchParams }) => {
 					</p>
 				</div>
 				<div className="flex flex-col items-center justify-center gap-3 w-full self-center h-full">
-					<Social />
-					<div className="flex flex-row items-center justify-center gap-3">
+					{/* <Social /> */}
+					{/* <div className="flex flex-row items-center justify-center gap-3">
 						<hr className="w-44 bg-grey h-0.5" />
 						<p className="text-center text-sm font-light text-primary">Or</p>
 						<hr className="w-44 bg-grey h-0.5" />
-					</div>
+					</div> */}
 
 					<form
 						onSubmit={(e) => handleSubmit(e)}
