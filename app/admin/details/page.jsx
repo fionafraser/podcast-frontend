@@ -160,7 +160,7 @@ const Details = () => {
 	const deleteAccount = async () => {
 		if (password !== "") {
 			await axios
-				.delete(`${process.env.NEXT_PUBLIC_BASE_URL}/admin`, {
+				.post(`${process.env.NEXT_PUBLIC_BASE_URL}/admin/delete`, {
 					password,
 					email: localStorage.getItem("podcastMail"),
 					id: data.user._id,
