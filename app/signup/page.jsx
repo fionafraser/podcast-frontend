@@ -101,7 +101,7 @@ const Signup = () => {
 						})
 						.then((res) => {
 							if (res.status === 201) {
-								router.push("/verify-email");
+								router.push("/");
 							}
 						})
 						.catch((err) => {
