@@ -83,7 +83,7 @@ export default function Home() {
 						pathname !== "/create-podcaster/step-two"
 					) {
 
-						// handleMakePayment()
+						handleMakePayment()
 					}
 				})
 				.catch((err) => {
