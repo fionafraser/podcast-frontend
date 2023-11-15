@@ -60,6 +60,15 @@ const Login = ({ searchParams }) => {
 	// 	signIn("google", { callbackUrl: "/" });
 	// };
 
+	const handleMakePayment = async (id) => {
+		await axios
+			.post(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/payment`, { id, verified: false })
+			.then((res) => {
+				window.location.href = res.data
+			})
+			.catch((err) => console.log(err));
+	};
+
 	// Credentials handler function
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -74,10 +83,14 @@ const Login = ({ searchParams }) => {
 					localStorage.setItem("podcastToken", res.data.accessToken);
 					localStorage.setItem("podcastId", res.data.id);
 					localStorage.setItem("podcastMail", res.data.mail);
-					if (searchParams.return) {
-						router.push(`${searchParams.return}`);
-					} else if (res.status === 200) {
-						router.push("/");
+					if(!res?.data.paid) {
+						handleMakePayment(res?.data?.id)
+					}else{
+						if (searchParams.return) {
+							router.push(`${searchParams.return}`);
+						} else if (res.status === 200) {
+							router.push("/");
+						}
 					}
 				})
 				.catch((err) => {
