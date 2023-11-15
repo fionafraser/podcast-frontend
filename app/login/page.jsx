@@ -79,12 +79,12 @@ const Login = ({ searchParams }) => {
 					email: loginInfo.email,
 					password: loginInfo.password,
 				})
-				.then((res) => {
+				.then(async (res) => {
 					localStorage.setItem("podcastToken", res.data.accessToken);
 					localStorage.setItem("podcastId", res.data.id);
 					localStorage.setItem("podcastMail", res.data.mail);
 					if(!res?.data.paid) {
-						handleMakePayment(res?.data?.id)
+						await handleMakePayment(res?.data?.id)
 					}else{
 						if (searchParams.return) {
 							router.push(`${searchParams.return}`);
