@@ -20,6 +20,8 @@ export default function RootLayout({ children }) {
 					<Root>{children}</Root>
 				</Providers>
 			</body>
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <script src="https://word-ai-widet.vercel.app/widget.js" defer></script>
 		</html>
 	);
 }
